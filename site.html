@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ورشة سيارات فيينا I ألتين عادل | ورشة ميدلينغ | تغيير حزام التوقيت</title>
+<meta name="description" content="ورشة سيارات ألتين عادل في 1120 فيينا - ميدلينغ. خدمات سيارات شاملة: إصلاح المحركات، تغيير حزام التوقيت، خدمة الفرامل، فحص §57a، خدمة الإطارات، ضبط المحاور ثلاثي الأبعاد. جودة وخبرة وسعر عادل.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #C90000;
+  --color-primary-dark: #860000;
+  --color-primary-light: #db6e6e;
+  --color-bg: #ECECEC;
+  --color-bg-dark: #292929;
+  --color-text: #292929;
+  --color-text-gray: #585858;
+  --color-text-light: #DBDBDB;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --font-family: 'Cairo', sans-serif;
+  --max-width: 1200px;
+  --header-height: 80px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-family);
+  background: var(--color-white);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  direction: rtl;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-white);
+}
+.logo img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+.logo .logo-text { font-size: 18px; font-weight: 700; line-height: 1.2; }
+.logo .logo-text span { color: var(--color-primary); }
+nav { display: flex; align-items: center; gap: 5px; }
+nav a {
+  color: var(--color-text-light);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+nav a:hover, nav a.active { color: var(--color-white); background: var(--color-primary); }
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+.mobile-toggle span { width: 28px; height: 2px; background: var(--color-white); border-radius: 2px; transition: 0.3s; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://static.wixstatic.com/media/84770f_ee708142a95c49839378fc31a31906c1~mv2.jpeg') center/cover no-repeat;
+  padding-top: var(--header-height);
+}
+.hero-content { max-width: 800px; padding: 40px 20px; }
+.hero h1 {
+  font-size: clamp(36px, 8vw, 90px);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+}
+.hero p {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--color-text-light);
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+.btn {
+  display: inline-block;
+  padding: 16px 48px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-family);
+}
+.btn:hover { background: var(--color-primary-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,0,0,0.3); }
+.btn-outline { background: transparent; border: 2px solid var(--color-white); }
+.btn-outline:hover { background: var(--color-white); color: var(--color-text); }
+
+/* ===== MARQUEE ===== */
+.marquee-section {
+  background: var(--color-bg-dark);
+  overflow: hidden;
+  padding: 20px 0;
+}
+.marquee-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 30px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-light);
+  white-space: nowrap;
+}
+.marquee-item .dot { width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; display: inline-block; }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== SECTION COMMON ===== */
+section { padding: 80px 0; }
+.section-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--color-text);
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-gray);
+  font-size: 17px;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.8;
+}
+.section-dark { background: var(--color-bg-dark); }
+.section-dark .section-title { color: var(--color-white); }
+.section-dark .section-subtitle { color: var(--color-text-light); }
+.section-light { background: var(--color-bg); }
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-image { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+.about-text h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+.about-text p { color: var(--color-text-gray); line-height: 1.8; margin-bottom: 15px; font-size: 15px; }
+.feature-list { list-style: none; margin-top: 20px; }
+.feature-list li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1px solid var(--color-bg);
+}
+.feature-list li:last-child { border: none; }
+.feature-list li::before { content: '✓'; color: var(--color-primary); font-weight: 800; font-size: 18px; }
+
+/* ===== SERVICE CARDS ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.service-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+.service-card-image {
+  height: 220px;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+.service-card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.service-card:hover .service-card-image img { transform: scale(1.08); }
+.service-card-body { padding: 25px; }
+.service-card-body h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--color-primary); }
+.service-card-body p { font-size: 14px; color: var(--color-text-gray); line-height: 1.7; }
+.service-card-body .card-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.service-card-body .card-link:hover { gap: 8px; }
+
+/* ===== TIRE SECTION ===== */
+.tire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.tire-content h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+.tire-content p { color: var(--color-text-gray); line-height: 1.8; margin-bottom: 15px; font-size: 15px; }
+.tire-image { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+
+/* ===== 3D ALIGNMENT ===== */
+.alignment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.alignment-content h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; color: var(--color-white); }
+.alignment-content p { color: var(--color-text-light); line-height: 1.8; margin-bottom: 15px; font-size: 15px; }
+.alignment-image { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.features-3d {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+.feature-3d-item {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  color: var(--color-white);
+}
+.feature-3d-item .icon { font-size: 28px; margin-bottom: 8px; }
+.feature-3d-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.feature-3d-item p { font-size: 12px; color: var(--color-text-light); }
+.price-tag {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+/* ===== REVIEWS ===== */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.review-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+.review-stars { color: #FFB800; font-size: 18px; margin-bottom: 15px; letter-spacing: 2px; }
+.review-text { font-size: 14px; color: var(--color-text-gray); line-height: 1.8; margin-bottom: 15px; }
+.review-author { font-weight: 700; font-size: 14px; }
+.review-badge { font-size: 12px; color: var(--color-text-gray); }
+.review-aggregate {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.review-aggregate .big-star { font-size: 48px; color: #FFB800; }
+.review-aggregate .big-score { font-size: 36px; font-weight: 800; }
+.review-aggregate p { color: var(--color-text-gray); }
+
+/* ===== CONTACT ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 25px; }
+.contact-info-item {
+  display: flex; align-items: flex-start; gap: 15px;
+}
+.contact-info-item .icon {
+  width: 50px; height: 50px;
+  background: var(--color-primary);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-white);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.contact-info-item h4 { font-weight: 700; margin-bottom: 4px; }
+.contact-info-item p, .contact-info-item a { color: var(--color-text-gray); font-size: 14px; }
+.contact-info-item a:hover { color: var(--color-primary); }
+.contact-form {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--color-bg);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  transition: 0.3s;
+  background: var(--color-bg);
+  direction: rtl;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-white);
+}
+.form-group textarea { height: 120px; resize: vertical; }
+.form-group .file-upload {
+  border: 2px dashed var(--color-bg);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--color-text-gray);
+  font-size: 13px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  padding: 60px 0 30px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-col h4 { color: var(--color-white); font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+.footer-col p { font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { font-size: 14px; transition: 0.3s; }
+.footer-col ul li a:hover { color: var(--color-primary); }
+.footer-social { display: flex; gap: 12px; margin-top: 15px; }
+.footer-social a {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.3s;
+  font-size: 16px;
+}
+.footer-social a:hover { border-color: var(--color-primary); background: var(--color-primary); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { display: none; }
+  nav.active { display: flex; flex-direction: column; position: absolute; top: var(--header-height); left: 0; right: 0; background: rgba(0,0,0,0.95); padding: 20px; gap: 5px; }
+  .mobile-toggle { display: flex; }
+  .about-grid, .tire-grid, .alignment-grid, .contact-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .features-3d { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(28px, 10vw, 50px); }
+  section { padding: 50px 0; }
+  .about-text h2, .tire-content h2, .alignment-content h2 { font-size: 26px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="https://static.wixstatic.com/media/786190_5425bdc14b3244f5892d810895d8afcf%7Emv2.jpg/v1/fit/w_60,h_60,al_c/786190_5425bdc14b3244f5892d810895d8afcf%7Emv2.jpg" alt="شعار الورشة">
+      <div class="logo-text">ورشة <span>ألتين عادل</span></div>
+    </a>
+    <nav id="nav">
+      <a href="#home" class="active">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#alignment">ضبط المحاور</a>
+      <a href="#reviews">التقييمات</a>
+      <a href="#contact">اتصل بنا</a>
+    </nav>
+    <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>ورشة سيارات فيينا</h1>
+    <p>أسعار عادلة، جودة ممتازة واستشارة شخصية – ورشتكم الموثوقة في 1120 فيينا-ميدلينغ!</p>
+    <a href="#contact" class="btn">احجز موعد الآن</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="dot"></span> ورشة سيارات فيينا</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة السيارات</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح السيارات</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح المحركات</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير حزام التوقيت</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير سلسلة التوقيت</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير الزيت</div>
+    <div class="marquee-item"><span class="dot"></span> فحص §57a</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة المركبات</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الفرامل</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة التكييف</div>
+    <div class="marquee-item"><span class="dot"></span> تعبئة المكيف</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> مستودع الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> ضبط المحاور</div>
+    <div class="marquee-item"><span class="dot"></span> الهيكل والطلاء</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح الانبعاجات</div>
+    <div class="marquee-item"><span class="dot"></span> تشخيص المحرك</div>
+    <div class="marquee-item"><span class="dot"></span> معاملات التأمين</div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="marquee-item"><span class="dot"></span> ورشة سيارات فيينا</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة السيارات</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح السيارات</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح المحركات</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير حزام التوقيت</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير سلسلة التوقيت</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير الزيت</div>
+    <div class="marquee-item"><span class="dot"></span> فحص §57a</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة المركبات</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الفرامل</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة التكييف</div>
+    <div class="marquee-item"><span class="dot"></span> تعبئة المكيف</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> مستودع الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> ضبط المحاور</div>
+    <div class="marquee-item"><span class="dot"></span> الهيكل والطلاء</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح الانبعاجات</div>
+    <div class="marquee-item"><span class="dot"></span> تشخيص المحرك</div>
+    <div class="marquee-item"><span class="dot"></span> معاملات التأمين</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://static.wixstatic.com/media/11062b_5208bfdba50949d8b178b8fb6f500a45~mv2.jpg/v1/fill/w_600,h_550,al_c,q_85,usm_0.66_1.00_0.01/11062b_5208bfdba50949d8b178b8fb6f500a45~mv2.jpg" alt="ورشة سيارات">
+      </div>
+      <div class="about-text">
+        <h2>ورشة الموثوقية والشفافية</h2>
+        <p>تعتبر ورشة سيارات ألتين عادل في 1120 فيينا ورشة موثوقة تقدم مجموعة واسعة من خدمات السيارات لجميع أنواع المركبات. تشمل الخدمات إصلاحات عامة للسيارات مثل إصلاح المحركات وتغيير حزام التوقيت وخدمة الفرامل وضبط الزوايا، وكلها ينفذها فنيون ذوو خبرة. بفضل أحدث أجهزة التشخيص والخبرة الفنية المتعمقة، يضمن ألتين عادل صيانة كل مركبة على أكمل وجه.</p>
+        <p>بهذه المجموعة الشاملة التي تشمل الإصلاحات وخدمات الإطارات المتخصصة ومعالجة الأضرار، تعتبر سيارات ألتين عادل الورشة المثالية لجميع سائقي السيارات الذين يهتمون بالجودة والموثوقية والخدمة الودودة.</p>
+        <ul class="feature-list">
+          <li>ورشة مستقلة لجميع الماركات</li>
+          <li>خدمة لجميع الماركات</li>
+          <li>أسعار عادلة وشفافة</li>
+          <li>خبرة أكثر من 10 سنوات</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-light" id="services">
+  <div class="container">
+    <h2 class="section-title">نقدم جميع الخدمات المتعلقة بمركبتك</h2>
+    <p class="section-subtitle">تقدم ورشة KFZ خدمات سيارات شاملة في فيينا، بما في ذلك إصلاح السيارات، خدمة الإطارات، تغيير حزام التوقيت وأعمال الكهرباء. تضمن الورشة الجودة والسلامة لتحسين أداء سيارتك.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://static.wixstatic.com/media/786190_c5b7c76c07d9445e8455877a19b27754~mv2.jpg/v1/fill/w_400,h_300,al_c,q_85/786190_c5b7c76c07d9445e8455877a19b27754~mv2.jpg" alt="خدمة السيارات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>خدمة السيارات</h3>
+          <p>تقدم سيارات ألتين عادل خدمات إصلاح شاملة، بما في ذلك تغيير حزام التوقيت، إصلاح المحركات، ضبط الزوايا، تغيير سائل الفرامل، وأعمال الكهرباء. كما تشمل خدمة الفرامل وأعمال العادم ضمن عروض الخدمة.</p>
+          <a href="https://www.kfzwerkstatt.wien/kfzservice" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://static.wixstatic.com/media/786190_fe039e3f0a0e462884f7386e538f4ee4~mv2.png/v1/fill/w_400,h_300,al_c,q_90/786190_fe039e3f0a0e462884f7386e538f4ee4~mv2.png" alt="إصلاح السيارات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>إصلاح السيارات</h3>
+          <p>تقدم سيارات ألتين عادل خدمات إصلاح شاملة، بما في ذلك تغيير حزام التوقيت، إصلاح المحركات، ضبط الزوايا، تغيير سائل الفرامل، وأعمال الكهرباء. كما تشمل خدمة الفرامل وأعمال العادم ضمن عروض الخدمة.</p>
+          <a href="https://www.kfzwerkstatt.wien/kfzreparatur" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://static.wixstatic.com/media/786190_2a682c7aaf5e44b5bd4603cce4f2aeec~mv2.png/v1/fill/w_400,h_300,al_c,q_90/786190_2a682c7aaf5e44b5bd4603cce4f2aeec~mv2.png" alt="فحص المركبات §57a" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>فحص المركبات §57a</h3>
+          <p>تقدم سيارات ألتين عادل خدمات شاملة لفحص § 57a، المعروف أيضاً باسم "Pickerl". يفحص الورشة ميزات السلامة والوظائف لضمان سلامة مركبتك والحصول على الملصق.</p>
+          <a href="https://www.kfzwerkstatt.wien/pickerl-wien" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://static.wixstatic.com/media/786190_8b02ef931f17462e93237855d1caedf5~mv2.png/v1/fill/w_400,h_300,al_c,q_90/786190_8b02ef931f17462e93237855d1caedf5~mv2.png" alt="الهيكل والطلاء" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>الهيكل والطلاء</h3>
+          <p>تقدم سيارات ألتين عادل خدمات احترافية للهيكل والدهان. بعد الحوادث، يتم إزالة الخدوش والانبعاجات بشكل احترافي. يتم الدهان بعدة طبقات للحماية المثلى والجمال.</p>
+          <a href="https://www.kfzwerkstatt.wien/karosserieundlack" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://static.wixstatic.com/media/786190_579132d21331422eb407560955836cfe~mv2.png/v1/fill/w_400,h_300,al_c,q_90/786190_579132d21331422eb407560955836cfe~mv2.png" alt="خدمة الإطارات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>خدمة الإطارات</h3>
+          <p>تقدم سيارات ألتين عادل خدمات شاملة حول الإطارات، بما في ذلك تغيير الإطارات والبيع والاستشارة. يستفيد العملاء من دعم احترافي في اختيار الإطارات المناسبة بالإضافة إلى مستودع إطارات عملي للتخزين الموسمي.</p>
+          <a href="https://www.kfzwerkstatt.wien/reifenservice-wien" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://static.wixstatic.com/media/055c2f1c592d425bb00ac82636f8fd45.jpg/v1/fill/w_400,h_300,al_c,q_85/055c2f1c592d425bb00ac82636f8fd45.jpg" alt="معاملات التأمين" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>معاملات التأمين</h3>
+          <p>تقدم سيارات ألتين عادل الدعم في معالجة الأضرار بعد الحوادث. يحصل العملاء على مساعدة مختصة في التوثيق والتواصل مع شركة التأمين وتنسيق الإصلاحات لضمان سير العملية بسلاسة.</p>
+          <a href="https://www.kfzwerkstatt.wien/versicherungsabwicklung" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIRE SERVICE -->
+<section>
+  <div class="container">
+    <div class="tire-grid">
+      <div class="tire-content">
+        <h2>خدمة ممتازة لمركبتك</h2>
+        <p>في مجال خدمة الإطارات، تتميز الورشة بعروض شاملة تشمل بيع وتخزين الإطارات. يحصل العملاء على استشارة خبيرة لاختيار إطارات الشتاء والصيف وجميع الفصول والسيارات الرياضية متعددة الاستخدامات والمركبات الكهربائية.</p>
+        <p>بالإضافة إلى ذلك، يمكن للعملاء إجراء تغيير الإطارات بسهولة في ألتين عادل، حيث توفر الورشة أيضاً مستودع إطارات محترف للتخزين الآمن والنظيف لإطارات الصيف والشتاء.</p>
+        <p>يتم الفحص بدقة وشفافية، مما يضمن للعملاء أن سياراتهم تستوفي جميع المتطلبات القانونية. إلى جانب الإصلاح والصيانة التقليدية، تقدم الورشة أيضاً أعمال الهيكل والطلاء.</p>
+        <a href="https://www.kfzwerkstatt.wien/reifenservice-wien" class="btn" style="margin-top:20px;">اكتشف خدمات الإطارات</a>
+      </div>
+      <div class="tire-image">
+        <img src="https://static.wixstatic.com/media/11062b_6fa1b85f4d2641358651976556c89d21~mv2.jpg/v1/fill/w_600,h_550,al_c,q_85/11062b_6fa1b85f4d2641358651976556c89d21~mv2.jpg" alt="خدمة الإطارات" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3D ALIGNMENT -->
+<section class="section-dark" id="alignment">
+  <div class="container">
+    <div class="alignment-grid">
+      <div class="alignment-content">
+        <h2>ضبط المحاور – خدمة جديدة لدينا!</h2>
+        <p>من الآن نقدم في ورشتنا ضبط محاور ثلاثي الأبعاد عالي الدقة بأحدث التقنيات. بمناسبة إطلاق خدمتنا الجديدة، استفد من عرض الافتتاح الحصري: ضبط محاور كامل مقابل 120 يورو فقط.</p>
+        <p>ضبط الزوايا بشكل صحيح يوفر أماناً أكبر وثباتاً أفضل على الطريق وتآكلاً أقل للإطارات. إذا كانت سيارتك تميل إلى اليسار أو اليمين، أو كان المقود مائلاً، أو تم تركيب إطارات جديدة، فإن ضبط المحاور الاحترافي مهم بشكل خاص.</p>
+        <p>باستخدام تقنية القياس الرقمي ثلاثية الأبعاد، نقوم بقياس زوايا العجل والميلان والتبعيد بدقة ملليمترية وضبط سيارتك بدقة وفقاً لمواصفات الشركة المصنعة. النتيجة: توجيه دقيق، راحة قيادة أكبر وثبات مثالي على الطريق.</p>
+        <div class="features-3d">
+          <div class="feature-3d-item">
+            <div class="icon">🔧</div>
+            <h4>أحدث التقنيات</h4>
+            <p>قياس رقمي ثلاثي الأبعاد</p>
+          </div>
+          <div class="feature-3d-item">
+            <div class="icon">⚡</div>
+            <h4>تنفيذ سريع</h4>
+            <p>دقائق معدودة</p>
+          </div>
+          <div class="feature-3d-item">
+            <div class="icon">🎯</div>
+            <h4>ضبط دقيق</h4>
+            <p>حسب مواصفات المصنع</p>
+          </div>
+          <div class="feature-3d-item">
+            <div class="icon">💰</div>
+            <h4>سعر افتتاح مميز</h4>
+            <p>120 يورو فقط</p>
+          </div>
+        </div>
+        <div class="price-tag">عرض الافتتاح: فقط 120 يورو</div>
+      </div>
+      <div class="alignment-image">
+        <img src="https://static.wixstatic.com/media/nsplsh_f2245a3087ce432a89ef062bca940410~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85/nsplsh_f2245a3087ce432a89ef062bca940410~mv2.jpg" alt="ضبط المحاور ثلاثي الأبعاد" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section-light" id="reviews">
+  <div class="container">
+    <h2 class="section-title">آراء عملاء سيارات عادل</h2>
+    <div class="review-aggregate">
+      <div class="big-star">⭐</div>
+      <div class="big-score">4.9</div>
+      <p>من 63 تقييم على Google</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">خدمة ممتازة ونظيفه وسريعه. تعامل راقي. المركز يستحق كل خير. شكراً جزيلاً</p>
+        <div class="review-author">هانس بازدرة</div>
+        <div class="review-badge">✓ عميل موثوق</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">أفضل ورشة سيارات في المنطقة. خدمة ودودة واحترافية. تم تغيير حزام التوقيت بسرعة وبسعر معقول. سأعود دائماً.</p>
+        <div class="review-author">لويس باسكاري</div>
+        <div class="review-badge">✓ عميل موثوق</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">أسعار عادلة جداً مقارنة بالورش الأخرى. العمل سريع ودقيق. أوصي بشدة بهذه الورشة. فريق العمل محترف وودود.</p>
+        <div class="review-author">بلوسكاريو إميل</div>
+        <div class="review-badge">✓ عميل موثوق</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:30px;">
+      <a href="https://www.google.com/maps/place/Kfz+Werkstatt+Wien/@48.1709917,16.3226481,15z" class="btn btn-outline" style="border-color:var(--color-primary);color:var(--color-primary);" target="_blank" rel="noopener">عرض على جوجل</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">اتصل بنا</h2>
+    <p class="section-subtitle">نحن هنا لمساعدتك. اتصل بنا أو قم بزيارة ورشتنا في 1120 فيينا-ميدلينغ.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="icon">📍</div>
+          <div>
+            <h4>العنوان</h4>
+            <p>شارع ساتشيغاسيه 18، مبنى 1 طابق 1<br>1120 فيينا-ميدلينغ، النمسا</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon">📞</div>
+          <div>
+            <h4>الهاتف</h4>
+            <a href="tel:+4369915992024">+43 699 15992024</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon">✉️</div>
+          <div>
+            <h4>البريد الإلكتروني</h4>
+            <a href="mailto:kfz@kfz-adili.at">kfz@kfz-adili.at</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon">🕐</div>
+          <div>
+            <h4>ساعات العمل</h4>
+            <p>الإثنين - الجمعة: 08:00 - 18:00<br>السبت: 09:00 - 13:00</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" action="mailto:kfz@kfz-adili.at" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input type="text" name="name" placeholder="أدخل اسمك" required>
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف</label>
+          <input type="tel" name="phone" placeholder="أدخل رقم هاتفك">
+        </div>
+        <div class="form-group">
+          <label>الرسالة</label>
+          <textarea name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+        </div>
+        <button type="submit" class="btn" style="width:100%">إرسال الرسالة</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>ورشة ألتين عادل</h4>
+        <p>ورشة سيارات موثوقة في 1120 فيينا-ميدلينغ. نقدم خدمات سيارات شاملة بأسعار عادلة وجودة ممتازة.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/WixStudio" aria-label="فيسبوك">f</a>
+          <a href="https://www.instagram.com/wixstudio/" aria-label="انستغرام">In</a>
+          <a href="https://x.com/WixStudio" aria-label="تويتر">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>خدماتنا</h4>
+        <ul>
+          <li><a href="https://www.kfzwerkstatt.wien/kfzservice">خدمة السيارات</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/kfzreparatur">إصلاح السيارات</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/pickerl-wien">فحص §57a</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/oelwechsel-wien">تغيير الزيت</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/klimaservice-wien">خدمة التكييف</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/bremsenservice-wien-1">خدمة الفرامل</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="https://www.kfzwerkstatt.wien/achsvermessung-wien">ضبط المحاور</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/reifendepot-wien">مستودع الإطارات</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/reifenservice-wien">خدمة الإطارات</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/motordiagnose-wien">تشخيص المحرك</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/getriebereparatur-wien">إصلاح ناقل الحركة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>القانونية</h4>
+        <ul>
+          <li><a href="https://www.kfzwerkstatt.wien/impressum">الإشعار القانوني</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/datenschutz">سياسة الخصوصية</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/cookies">ملفات الارتباط</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/kontakt">اتصل بنا</a></li>
+          <li><a href="https://www.kfzwerkstatt.wien/anfahrt">الاتجاهات</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ورشة ألتين عادل. جميع الحقوق محفوظة.</span>
+      <span>Kfz Werkstatt Wien - Altin Adili | 1120 Wien-Meidling</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function() {
+    document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('nav').classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>

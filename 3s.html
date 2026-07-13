@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFZ - العرض الاستثماري</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts - Cairo for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --kfz-bg: #000000;
+            --kfz-card-bg: #0a1e3d;
+            --kfz-card-bg-light: #0f2a52;
+            --kfz-accent-blue: #1e3a6e;
+            --kfz-bright-blue: #2563eb;
+            --kfz-glow-blue: #3b82f6;
+            --kfz-text: #ffffff;
+            --kfz-text-muted: #94a3b8;
+            --kfz-text-dim: #64748b;
+            --kfz-border: rgba(255, 255, 255, 0.1);
+            --kfz-border-blue: rgba(37, 99, 235, 0.4);
+            --kfz-gold: #d4af37;
+            --kfz-gold-light: #e6c555;
+            --kfz-danger: #ef4444;
+            --kfz-danger-dark: #991b1b;
+            --kfz-success: #22c55e;
+            --kfz-warning: #f59e0b;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--kfz-bg);
+            color: var(--kfz-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .kfz-carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        /* Header Style */
+        .kfz-header {
+            background: linear-gradient(135deg, #020617 0%, #0a1e3d 50%, #0f2a52 100%);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--kfz-border-blue);
+            border-bottom: none;
+        }
+        
+        .kfz-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .kfz-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--kfz-bright-blue), var(--kfz-glow-blue), var(--kfz-bright-blue));
+        }
+        
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .kfz-logo {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 4px 10px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .kfz-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            color: var(--kfz-text-muted);
+        }
+        
+        .kfz-header-info {
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .kfz-info-badge {
+            background: rgba(37, 99, 235, 0.15);
+            backdrop-filter: blur(10px);
+            color: var(--kfz-text);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .kfz-info-badge i {
+            margin-left: 0.5rem;
+            color: var(--kfz-glow-blue);
+        }
+        
+        /* Carousel Style */
+        .kfz-carousel {
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background: var(--kfz-bg);
+            border: 1px solid var(--kfz-border);
+            border-top: none;
+        }
+        
+        .carousel-inner {
+            border-radius: 0 0 15px 15px;
+        }
+        
+        /* Slide Common Style */
+        .kfz-slide {
+            padding: 2.5rem 2rem;
+            min-height: 550px;
+            background: var(--kfz-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .kfz-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--kfz-bright-blue) 0%, var(--kfz-glow-blue) 50%, var(--kfz-bright-blue) 100%);
+        }
+        
+        .kfz-slide-content {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .kfz-slide-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--kfz-card-bg);
+            color: var(--kfz-glow-blue);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+            border: 2px solid var(--kfz-border-blue);
+        }
+        
+        .kfz-slide-title {
+            color: var(--kfz-text);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 3px solid var(--kfz-bright-blue);
+            display: inline-block;
+            position: relative;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        .kfz-slide-subtitle {
+            color: var(--kfz-glow-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .kfz-slide-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--kfz-text-muted);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        /* Features List */
+        .kfz-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .kfz-features-list li {
+            background: linear-gradient(135deg, var(--kfz-card-bg) 0%, var(--kfz-card-bg-light) 100%);
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            border-right: 4px solid var(--kfz-bright-blue);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            color: var(--kfz-text);
+            border: 1px solid var(--kfz-border-blue);
+            border-right: 4px solid var(--kfz-bright-blue);
+        }
+        
+        .kfz-features-list li:hover {
+            background: linear-gradient(135deg, var(--kfz-card-bg-light) 0%, var(--kfz-accent-blue) 100%);
+            transform: translateX(-5px);
+            box-shadow: 0 5px 25px rgba(37, 99, 235, 0.2);
+            border-color: var(--kfz-glow-blue);
+        }
+        
+        .kfz-features-list li i {
+            color: var(--kfz-glow-blue);
+            margin-left: 0.7rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Stats Grid */
+        .kfz-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+        
+        .kfz-stat-card {
+            background: linear-gradient(135deg, var(--kfz-card-bg) 0%, var(--kfz-card-bg-light) 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-top: 4px solid var(--kfz-bright-blue);
+            transition: all 0.3s ease;
+            border: 1px solid var(--kfz-border-blue);
+            border-top: 4px solid var(--kfz-bright-blue);
+        }
+        
+        .kfz-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            border-color: var(--kfz-glow-blue);
+        }
+        
+        .kfz-stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--kfz-glow-blue);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .kfz-stat-label {
+            font-size: 0.95rem;
+            color: var(--kfz-text-muted);
+            font-weight: 600;
+        }
+        
+        /* Gap Analysis Cards */
+        .kfz-gap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kfz-gap-card {
+            background: var(--kfz-card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--kfz-border-blue);
+        }
+        
+        .kfz-gap-header {
+            background: linear-gradient(135deg, var(--kfz-danger) 0%, #b91c1c 100%);
+            color: white;
+            padding: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .kfz-gap-header i {
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .kfz-gap-body {
+            padding: 1.2rem;
+            background: var(--kfz-card-bg);
+        }
+        
+        .kfz-gap-desc {
+            color: var(--kfz-text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .kfz-gap-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .kfz-gap-stat-label {
+            color: var(--kfz-text-dim);
+            font-size: 0.9rem;
+        }
+        
+        .kfz-gap-stat-value {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .kfz-solution {
+            background: linear-gradient(135deg, var(--kfz-card-bg-light) 0%, var(--kfz-accent-blue) 100%);
+            color: var(--kfz-text);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid var(--kfz-border-blue);
+        }
+        
+        .kfz-solution-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--kfz-text);
+        }
+        
+        .kfz-solution-title i {
+            margin-left: 0.5rem;
+            color: var(--kfz-success);
+        }
+        
+        .kfz-solution p {
+            color: var(--kfz-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .kfz-solution-stat {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            align-items: center;
+        }
+        
+        .kfz-solution-stat span:first-child {
+            color: var(--kfz-text-dim);
+            font-size: 0.85rem;
+        }
+        
+        .kfz-solution-stat-value {
+            background: rgba(34, 197, 94, 0.15);
+            color: #86efac;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        /* Process Steps */
+        .kfz-process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+        
+        .kfz-process-step {
+            background: var(--kfz-card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-top: 4px solid var(--kfz-bright-blue);
+            position: relative;
+            border: 1px solid var(--kfz-border-blue);
+            border-top: 4px solid var(--kfz-bright-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .kfz-process-step:hover {
+            border-color: var(--kfz-glow-blue);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .kfz-step-number {
+            position: absolute;
+            top: -15px;
+            right: 1.5rem;
+            background: var(--kfz-bright-blue);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .kfz-step-title {
+            color: var(--kfz-text);
+            font-weight: 700;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .kfz-step-desc {
+            color: var(--kfz-text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Team Structure */
+        .kfz-team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kfz-team-card {
+            background: linear-gradient(135deg, var(--kfz-card-bg) 0%, var(--kfz-card-bg-light) 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-right: 4px solid var(--kfz-bright-blue);
+            transition: all 0.3s ease;
+            border: 1px solid var(--kfz-border-blue);
+            border-right: 4px solid var(--kfz-bright-blue);
+        }
+        
+        .kfz-team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            border-color: var(--kfz-glow-blue);
+        }
+        
+        .kfz-team-role {
+            color: var(--kfz-glow-blue);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .kfz-team-desc {
+            color: var(--kfz-text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Vehicle Types */
+        .kfz-vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kfz-vehicle-card {
+            background: var(--kfz-card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-top: 4px solid;
+            text-align: center;
+            border: 1px solid var(--kfz-border-blue);
+        }
+        
+        .kfz-vehicle-european {
+            border-top-color: var(--kfz-glow-blue);
+        }
+        
+        .kfz-vehicle-american {
+            border-top-color: var(--kfz-danger);
+        }
+        
+        .kfz-vehicle-asian {
+            border-top-color: var(--kfz-warning);
+        }
+        
+        .kfz-vehicle-percent {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0.5rem 0;
+        }
+        
+        .kfz-vehicle-european .kfz-vehicle-percent {
+            color: var(--kfz-glow-blue);
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .kfz-vehicle-american .kfz-vehicle-percent {
+            color: var(--kfz-danger);
+            text-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+        
+        .kfz-vehicle-asian .kfz-vehicle-percent {
+            color: var(--kfz-warning);
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .kfz-vehicle-brands {
+            color: var(--kfz-text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Inventory Chart */
+        .kfz-inventory-chart {
+            display: flex;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .kfz-inventory-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .kfz-inventory-segment:hover {
+            opacity: 0.85;
+            filter: brightness(1.2);
+        }
+        
+        .kfz-inventory-oils {
+            background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+            width: 45%;
+        }
+        
+        .kfz-inventory-filters {
+            background: linear-gradient(90deg, #b45309 0%, #d97706 100%);
+            width: 30%;
+        }
+        
+        .kfz-inventory-brakes {
+            background: linear-gradient(90deg, #b91c1c 0%, #ef4444 100%);
+            width: 25%;
+        }
+        
+        /* Final Slide */
+        .kfz-final-slide {
+            background: linear-gradient(135deg, #020617 0%, #0a1e3d 40%, #0f2a52 100%);
+            color: white;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kfz-final-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .kfz-final-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--kfz-bright-blue), var(--kfz-glow-blue), var(--kfz-bright-blue));
+        }
+        
+        .kfz-final-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .kfz-final-title {
+            color: #ffffff;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        .kfz-final-subtitle {
+            color: var(--kfz-glow-blue);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .kfz-final-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            color: var(--kfz-text-muted);
+        }
+        
+        .kfz-final-features {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .kfz-final-feature {
+            background: rgba(37, 99, 235, 0.12);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--kfz-text);
+        }
+        
+        .kfz-final-feature i {
+            color: var(--kfz-glow-blue);
+            margin-left: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .kfz-cta-button {
+            background: linear-gradient(135deg, var(--kfz-bright-blue) 0%, var(--kfz-glow-blue) 100%);
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.4);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .kfz-cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.5);
+            color: #ffffff;
+        }
+        
+        .kfz-cta-button i {
+            margin-right: 0.7rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Carousel Controls */
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            opacity: 1;
+        }
+        
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: var(--kfz-card-bg);
+            border-radius: 50%;
+            padding: 1.5rem;
+            background-size: 50% 50%;
+            border: 2px solid var(--kfz-border-blue);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%233b82f6'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%233b82f6'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+        }
+        
+        /* Indicators */
+        .carousel-indicators {
+            bottom: 15px;
+            margin-bottom: 0;
+        }
+        
+        .carousel-indicators button {
+            background-color: rgba(37, 99, 235, 0.3);
+            border: 1px solid rgba(37, 99, 235, 0.4);
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-indicators .active {
+            background-color: var(--kfz-glow-blue);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Footer */
+        .kfz-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--kfz-text-dim);
+            font-size: 0.9rem;
+            padding: 1rem;
+        }
+        
+        .kfz-footer a {
+            color: var(--kfz-glow-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .kfz-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .kfz-slide {
+                padding: 2rem 1rem;
+                min-height: 450px;
+            }
+            
+            .kfz-slide-title {
+                font-size: 1.6rem;
+            }
+            
+            .kfz-final-title {
+                font-size: 2rem;
+            }
+            
+            .kfz-final-text {
+                font-size: 1rem;
+            }
+            
+            .kfz-cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .kfz-features-list,
+            .kfz-stats-grid,
+            .kfz-gap-grid,
+            .kfz-process-steps,
+            .kfz-team-grid,
+            .kfz-vehicle-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .kfz-logo {
+                font-size: 2.2rem;
+            }
+            
+            .kfz-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animation for content */
+        .carousel-item.active .kfz-slide-content {
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Progress bar */
+        .kfz-progress-container {
+            background: rgba(37, 99, 235, 0.1);
+            height: 4px;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+        }
+        
+        .kfz-progress-bar {
+            background: linear-gradient(90deg, var(--kfz-bright-blue) 0%, var(--kfz-glow-blue) 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="kfz-carousel-container">
+        <!-- Header -->
+        <div class="kfz-header">
+            <div class="kfz-logo">KFZ ALFAWAZ</div>
+            <div class="kfz-subtitle">مركز صيانة مركبات متكامل ومبتكر</div>
+            <div class="kfz-header-info">
+                <span class="kfz-info-badge"><i class="bi bi-geo-alt"></i> الرياض، المملكة العربية السعودية</span>
+                <span class="kfz-info-badge"><i class="bi bi-check-circle"></i> جاهزية تشغيلية فورية</span>
+                <span class="kfz-info-badge"><i class="bi bi-graph-up"></i> العرض الاستثماري</span>
+            </div>
+        </div>
+        
+        <!-- Carousel -->
+        <div id="kfzCarousel" class="carousel slide kfz-carousel" data-bs-ride="carousel" data-bs-interval="6000">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="0" class="active" aria-label="الشريحة 1"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="1" aria-label="الشريحة 2"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="2" aria-label="الشريحة 3"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="3" aria-label="الشريحة 4"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="4" aria-label="الشريحة 5"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="5" aria-label="الشريحة 6"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="6" aria-label="الشريحة 7"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="7" aria-label="الشريحة 8"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="8" aria-label="الشريحة 9"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="9" aria-label="الشريحة 10"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="10" aria-label="الشريحة 11"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="11" aria-label="الشريحة 12"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="12" aria-label="الشريحة 13"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="13" aria-label="الشريحة 14"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="14" aria-label="الشريحة 15"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="15" aria-label="الشريحة 16"></button>
+                <button type="button" data-bs-target="#kfzCarousel" data-bs-slide-to="16" aria-label="الشريحة 17"></button>
+            </div>
+            
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <!-- Slide 1: About KFZ -->
+                <div class="carousel-item active">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">1</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">عن المشروع - ما هو KFZ؟</h2>
+                            <p class="kfz-slide-text">
+                                مركز صيانة مركبات متكامل ومدروس من كافة الجوانب التشغيلية، الفنية، والإدارية، 
+                                وجاهز للتنفيذ الفوري في مدينة الرياض. يقدم المركز حلولاً مبتكرة لفجوات السوق 
+                                التشغيلية التي يعاني منها المستهلك في مناطق الرياض الصناعية.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-check2-circle"></i> مركز صيانة متكامل ومكتمل الجاهزية</li>
+                                <li><i class="bi bi-lightbulb"></i> حلول مبتكرة لفجوات السوق</li>
+                                <li><i class="bi bi-geo-alt"></i> مواقع استراتيجية في الرياض</li>
+                                <li><i class="bi bi-gear"></i> جاهز للتنفيذ الفوري</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Why KFZ -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">2</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">لماذا KFZ؟</h2>
+                            <p class="kfz-slide-text">
+                                نسد الفجوات التشغيلية في سوق صيانة السيارات ونحسن جودة الخدمات، 
+                                مع تقديم تجربة عميل استثنائية ومختلفة عن السوق التقليدي.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-shield-check"></i> سد الفجوات التشغيلية في السوق</li>
+                                <li><i class="bi bi-star"></i> تحسين جودة الخدمات ورفع مستوى الثقة</li>
+                                <li><i class="bi bi-people"></i> تقديم تجربة عميل استثنائية</li>
+                                <li><i class="bi bi-diagram-3"></i> بناء نموذج إحالة استراتيجي</li>
+                            </ul>
+                            <div class="kfz-stats-grid">
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">8+</div>
+                                    <div class="kfz-stat-label">فجوات سوقية تم حلها</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">30+</div>
+                                    <div class="kfz-stat-label">شريك محتمل في شبكة الإحالة</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">100%</div>
+                                    <div class="kfz-stat-label">جاهزية تشغيلية فورية</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Key Features -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">3</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">المميزات الرئيسية</h2>
+                            <p class="kfz-slide-text">
+                                يتميز مركز KFZ بمجموعة من المزايا التنافسية التي تجعله الخيار الأمثل 
+                                في سوق صيانة المركبات بالرياض.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-check-circle-fill"></i> 100% جاهزية تشغيلية فورية</li>
+                                <li><i class="bi bi-people-fill"></i> فريق فني متخصص ومؤهل</li>
+                                <li><i class="bi bi-cpu"></i> تقنيات تشخيص متقدمة</li>
+                                <li><i class="bi bi-eye"></i> شفافية كاملة في التسعير</li>
+                                <li><i class="bi bi-shield-fill-check"></i> ضمان على جميع الأعمال</li>
+                                <li><i class="bi bi-award"></i> جودة عالية معتمدة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Project Introduction -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">4</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">مقدمة المشروع والجاهزية التشغيلية</h2>
+                            <p class="kfz-slide-subtitle">الموقف الاستراتيجي</p>
+                            <p class="kfz-slide-text">
+                                يتميز مشروع KFZ بموقف استراتيجي مكتمل الجاهزية، لا يتطلب مراحل تطوير مسبقة 
+                                أو تجارب تقنية، مع فترة تشغيلية قصيرة تقلص فترة ما قبل التشغيل إلى الحد الأدنى 
+                                فور توفر التمويل.
+                            </p>
+                            <div class="kfz-stats-grid">
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">100%</div>
+                                    <div class="kfz-stat-label">الجاهزية الفورية</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">0</div>
+                                    <div class="kfz-stat-label">مراحل تطوير مسبقة</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">√</div>
+                                    <div class="kfz-stat-label">فترة تشغيلية قصيرة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5: Strategic Goal -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">5</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">الهدف الاستراتيجي</h2>
+                            <p class="kfz-slide-text">
+                                نهدف إلى تحقيق أهداف استراتيجية واضحة تضمن نجاح المشروع واستدامته في السوق.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-cash-coin"></i> تأمين دخل شهري ثابت ومستقر</li>
+                                <li><i class="bi bi-calendar-check"></i> تحقيق جدولة تشغيلية مستقرة للمركز</li>
+                                <li><i class="bi bi-trophy"></i> بناء علامة مرجعية قادرة على منافسة الوكالات الكبرى</li>
+                                <li><i class="bi bi-graph-up-arrow"></i> تحقيق نمو مستدام في حصة السوق</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 6: Readiness Pillars -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">6</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">ركائز الجاهزية</h2>
+                            <p class="kfz-slide-text">
+                                تقوم جاهزية المشروع على ركائز أساسية تضمن سير العمليات بسلاسة وتجنب المفاجآت.
+                            </p>
+                            <div class="kfz-process-steps">
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number">1</div>
+                                    <h4 class="kfz-step-title">خطة تشغيلية ميدانية</h4>
+                                    <p class="kfz-step-desc">واقعية ومحددة المخاطر، تضمن سير العمليات بسلاسة وتجنب المفاجآت</p>
+                                </div>
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number">2</div>
+                                    <h4 class="kfz-step-title">فريق عمل خبير</h4>
+                                    <p class="kfz-step-desc">مستعد للمباشرة فوراً مع خبرة عملية عميقة في قطاع صيانة المركبات</p>
+                                </div>
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number">3</div>
+                                    <h4 class="kfz-step-title">أطر قانونية وتنظيمية</h4>
+                                    <p class="kfz-step-desc">محسومة ومكتملة، تضمن الامتثال الكامل لجميع المتطلبات القانونية والتنظيمية</p>
+                                </div>
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number">4</div>
+                                    <h4 class="kfz-step-title">العمل الميداني الفني</h4>
+                                    <p class="kfz-step-desc">تركيز كامل على العمليات الفنية مع الإدارة الورقية المنظمة داخلياً</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 7: Market Analysis -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">7</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">تحليل السوق: الثغرات التشغيلية</h2>
+                            <p class="kfz-slide-text">
+                                دراسة ميدانية شاملة استهدفت النطاقات الجغرافية الرئيسية لصيانة السيارات في الرياض، 
+                                حيث تم رصد 8 فجوات رئيسية في السوق الحالي.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-search"></i> تحليل شامل للسوق الحالي</li>
+                                <li><i class="bi bi-exclamation-triangle"></i> رصد الفجوات التشغيلية الرئيسية</li>
+                                <li><i class="bi bi-geo-alt"></i> استهداف مناطق صناعية محددة</li>
+                                <li><i class="bi bi-clipboard-data"></i> 8 فجوات رئيسية تم رصدها</li>
+                            </ul>
+                            <div class="kfz-stats-grid">
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">8</div>
+                                    <div class="kfz-stat-label">فجوات رئيسية</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">7+</div>
+                                    <div class="kfz-stat-label">مناطق صناعية مستهدفة</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">100%</div>
+                                    <div class="kfz-stat-label">تغطية السوق</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 8: Gaps 1-4 -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">8</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">الفجوات المرصودة والحلول (1-4)</h2>
+                            <div class="kfz-gap-grid">
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-clock-history"></i> عشوائية التنظيم</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">استغراق المركبة مدة طويلة مقارنة بحجم الخدمة</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">كفاءة الوقت</span>
+                                            <span class="kfz-gap-stat-value">25%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> دورة محددة الزمن</div>
+                                            <p>جدولة صارمة لرفع معدل دوران المركبات</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>كفاءة الوقت</span>
+                                                <span class="kfz-solution-stat-value">85%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-exclamation-octagon"></i> ضعف الكفاءة</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">اعتماد على الممارسة العشوائية وأخطاء التشخيص</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">دقة الإصلاح</span>
+                                            <span class="kfz-gap-stat-value">40%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> طاقم مؤهل</div>
+                                            <p>فهم علمي لضمان دقة الإصلاح من المرة الأولى</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>دقة الإصلاح</span>
+                                                <span class="kfz-solution-stat-value">92%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-cash-stack"></i> عشوائية التسعير</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">تقلب الأسعار وتكاليف غير مبررة</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">شفافية الأسعار</span>
+                                            <span class="kfz-gap-stat-value">20%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> تسعير ثابت</div>
+                                            <p>قائمة أسعار مسبقة لمنع الاجتهاد الشخصي</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>شفافية الأسعار</span>
+                                                <span class="kfz-solution-stat-value">95%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-search"></i> غياب التشخيص</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">افتقار الأدوات للتشخيص القطعي</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">دقة التشخيص</span>
+                                            <span class="kfz-gap-stat-value">30%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> أدوات متقدمة</div>
+                                            <p>أجهزة فحص دقيقة للكمبيوتر ونسب السوائل</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>دقة التشخيص</span>
+                                                <span class="kfz-solution-stat-value">88%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 9: Gaps 5-8 -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">9</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">الفجوات المرصودة والحلول (5-8)</h2>
+                            <div class="kfz-gap-grid">
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-lightning"></i> معضلات الكهرباء</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">عجز الورش عن حل المشاكل البرمجية والمعقدة</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">قدرة الحل</span>
+                                            <span class="kfz-gap-stat-value">25%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> قسم كهربائي متخصص</div>
+                                            <p>ميزة تنافسية في الأنظمة البرمجية والضفائر المعقدة</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>قدرة الحل</span>
+                                                <span class="kfz-solution-stat-value">90%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-eye-slash"></i> غياب الشفافية</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">إصلاح دون إطلاع العميل أو موافقته المسبقة</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">شفافية العمل</span>
+                                            <span class="kfz-gap-stat-value">15%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> حوكمة وموافقة مسبقة</div>
+                                            <p>التزام قطعي بعدم التنفيذ قبل اعتماد العميل</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>شفافية العمل</span>
+                                                <span class="kfz-solution-stat-value">98%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-emoji-frown"></i> تدني تجربة العميل</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">بيئات عمل غير مهيأة وصعوبة التواصل</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">رضا العميل</span>
+                                            <span class="kfz-gap-stat-value">30%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> بيئة عمل عصرية</div>
+                                            <p>صالة استقبال راقية ونظام وثائق محكم</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>رضا العميل</span>
+                                                <span class="kfz-solution-stat-value">92%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kfz-gap-card">
+                                    <div class="kfz-gap-header"><i class="bi bi-shield-exclamation"></i> فجوة الثقة</div>
+                                    <div class="kfz-gap-body">
+                                        <p class="kfz-gap-desc">فقدان الثقة نتيجة التجارب السلبية المتكررة</p>
+                                        <div class="kfz-gap-stat">
+                                            <span class="kfz-gap-stat-label">مستوى الثقة</span>
+                                            <span class="kfz-gap-stat-value">20%</span>
+                                        </div>
+                                        <div class="kfz-solution">
+                                            <div class="kfz-solution-title"><i class="bi bi-check-circle"></i> بناء الثقة تدريجياً</div>
+                                            <p>شفافية كاملة وضمانات حقيقية قابلة للتنفيذ</p>
+                                            <div class="kfz-solution-stat">
+                                                <span>مستوى الثقة</span>
+                                                <span class="kfz-solution-stat-value">90%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 10: Team Structure -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">10</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">الهيكل الإداري والفني</h2>
+                            <p class="kfz-slide-text">
+                                فريق عمل متكامل يغطي جميع الجوانب التشغيلية للمركز، مع توزيع واضح للمهام والمسؤوليات.
+                            </p>
+                            <div class="kfz-team-grid">
+                                <div class="kfz-team-card">
+                                    <div class="kfz-team-role"><i class="bi bi-person-badge"></i> مدير المركز</div>
+                                    <p class="kfz-team-desc">الإشراف العام على العمليات والتخطيط الاستراتيجي والتواصل مع العملاء</p>
+                                </div>
+                                <div class="kfz-team-card">
+                                    <div class="kfz-team-role"><i class="bi bi-wrench-adjustable"></i> فني ميكانيكا</div>
+                                    <p class="kfz-team-desc">الصيانة والإصلاح الميكانيكي للمركبات بأنواعها المختلفة</p>
+                                </div>
+                                <div class="kfz-team-card">
+                                    <div class="kfz-team-role"><i class="bi bi-lightning-charge"></i> فني كهرباء</div>
+                                    <p class="kfz-team-desc">تشخيص وإصلاح الأعطال الكهربائية والبرمجية المتقدمة</p>
+                                </div>
+                                <div class="kfz-team-card">
+                                    <div class="kfz-team-role"><i class="bi bi-receipt"></i> مسؤول الاستقبال</div>
+                                    <p class="kfz-team-desc">استقبال العملاء وإدارة الفواتير والوثائق والمتابعة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 11: Vehicle Types -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">11</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">أنواع المركبات المستهدفة</h2>
+                            <p class="kfz-slide-text">
+                                يخدم المركز جميع أنواع المركبات مع تركيز خاص على الأنواع الأكثر انتشاراً في السوق السعودي.
+                            </p>
+                            <div class="kfz-vehicle-grid">
+                                <div class="kfz-vehicle-card kfz-vehicle-european">
+                                    <div style="color: var(--kfz-glow-blue); font-weight: 700; font-size: 1.1rem;"><i class="bi bi-globe-europe-africa"></i> أوروبية</div>
+                                    <div class="kfz-vehicle-percent">45%</div>
+                                    <div class="kfz-vehicle-brands">بي إم دبليو، مرسيدس، أودي، فولكس واجن</div>
+                                </div>
+                                <div class="kfz-vehicle-card kfz-vehicle-american">
+                                    <div style="color: var(--kfz-danger); font-weight: 700; font-size: 1.1rem;"><i class="bi bi-flag"></i> أمريكية</div>
+                                    <div class="kfz-vehicle-percent">20%</div>
+                                    <div class="kfz-vehicle-brands">فورد، شيفروليه، جيب، دودج</div>
+                                </div>
+                                <div class="kfz-vehicle-card kfz-vehicle-asian">
+                                    <div style="color: var(--kfz-warning); font-weight: 700; font-size: 1.1rem;"><i class="bi bi-globe-asia-australia"></i> آسيوية</div>
+                                    <div class="kfz-vehicle-percent">35%</div>
+                                    <div class="kfz-vehicle-brands">تويوتا، نيسان، هيونداي، كيا</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 12: Services -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">12</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">الخدمات المقدمة</h2>
+                            <p class="kfz-slide-text">
+                                مجموعة شاملة من خدمات الصيانة والإصلاح تغطي جميع احتياجات المركبات.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-droplet"></i> تغيير الزيوت والفلاتر</li>
+                                <li><i class="bi bi-speedometer2"></i> صيانة المكابح والفرامل</li>
+                                <li><i class="bi bi-thermometer-half"></i> فحص وتبريد المحرك</li>
+                                <li><i class="bi bi-lightning-charge"></i> تشخيص كهربائي متقدم</li>
+                                <li><i class="bi bi-gear-wide-connected"></i> صيانة ناقل الحركة</li>
+                                <li><i class="bi bi-car-front"></i> خدمة المسار والتعليق</li>
+                                <li><i class="bi bi-cpu"></i> برمجة وفلشة الكمبيوتر</li>
+                                <li><i class="bi bi-clipboard-check"></i> فحص شامل قبل الشراء</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 13: Inventory -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">13</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">المخزون والمستلزمات</h2>
+                            <p class="kfz-slide-text">
+                                مخزون مُدار بعناية يضمن توفر القطع والمواد اللازمة لسرعة تنفيذ الخدمات.
+                            </p>
+                            <div class="kfz-inventory-chart">
+                                <div class="kfz-inventory-segment kfz-inventory-oils">زيوت وسوائل 45%</div>
+                                <div class="kfz-inventory-segment kfz-inventory-filters">فلاتر ومستهلكات 30%</div>
+                                <div class="kfz-inventory-segment kfz-inventory-brakes">قطع مكابح 25%</div>
+                            </div>
+                            <div class="kfz-stats-grid">
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">45%</div>
+                                    <div class="kfz-stat-label">زيوت وسوائل</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">30%</div>
+                                    <div class="kfz-stat-label">فلاتر ومستهلكات</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">25%</div>
+                                    <div class="kfz-stat-label">قطع مكابح</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 14: Revenue Model -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">14</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">نموذج الإيرادات</h2>
+                            <p class="kfz-slide-text">
+                                مصادر إيرادات متنوعة ومستدامة تضمن تدفقاً نقدياً ثابتاً للمركز.
+                            </p>
+                            <ul class="kfz-features-list">
+                                <li><i class="bi bi-cash-coin"></i> خدمات الصيانة الدورية</li>
+                                <li><i class="bi bi-wrench"></i> إصلاحات الميكانيكا والكهرباء</li>
+                                <li><i class="bi bi-box-seam"></i> بيع قطع الغيار والمستلزمات</li>
+                                <li><i class="bi bi-arrow-left-right"></i> عمولات شبكة الإحالة</li>
+                                <li><i class="bi bi-shield-check"></i> عقود صيانة سنوية</li>
+                                <li><i class="bi bi-qr-code-scan"></i> خدمات الفحص والتشخيص</li>
+                            </ul>
+                            <div class="kfz-stats-grid">
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">60%</div>
+                                    <div class="kfz-stat-label">خدمات الصيانة والإصلاح</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">25%</div>
+                                    <div class="kfz-stat-label">بيع قطع الغيار</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">15%</div>
+                                    <div class="kfz-stat-label">عقود وإحالات</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 15: Competitive Advantages -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">15</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">المزايا التنافسية</h2>
+                            <p class="kfz-slide-text">
+                                مجموعة من المزايا الفريدة التي تميز KFZ عن المنافسين في السوق.
+                            </p>
+                            <div class="kfz-process-steps">
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number"><i class="bi bi-bolt" style="font-size: 1.1rem;"></i></div>
+                                    <h4 class="kfz-step-title">سرعة التنفيذ</h4>
+                                    <p class="kfz-step-desc">جدولة زمنية صارمة تضمن تسليم المركبات في الموعد المحدد</p>
+                                </div>
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number"><i class="bi bi-eye" style="font-size: 1.1rem;"></i></div>
+                                    <h4 class="kfz-step-title">شفافية تامة</h4>
+                                    <p class="kfz-step-desc">أسعار واضحة وموافقة مسبقة قبل أي عمل إضافي</p>
+                                </div>
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number"><i class="bi bi-award" style="font-size: 1.1rem;"></i></div>
+                                    <h4 class="kfz-step-title">جودة معتمدة</h4>
+                                    <p class="kfz-step-desc">ضمان شامل على جميع الأعمال مع متابعة ما بعد الخدمة</p>
+                                </div>
+                                <div class="kfz-process-step">
+                                    <div class="kfz-step-number"><i class="bi bi-cpu" style="font-size: 1.1rem;"></i></div>
+                                    <h4 class="kfz-step-title">تقنية متقدمة</h4>
+                                    <p class="kfz-step-desc">أحدث أجهزة التشخيص والفحص لجميع أنواع المركبات</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 16: Financial Summary -->
+                <div class="carousel-item">
+                    <div class="kfz-slide">
+                        <div class="kfz-slide-number">16</div>
+                        <div class="kfz-slide-content">
+                            <h2 class="kfz-slide-title">الملخص المالي</h2>
+                            <p class="kfz-slide-text">
+                                أرقام مالية واضحة تعكس الجدوى الاقتصادية للمشروع والعائد المتوقع على الاستثمار.
+                            </p>
+                            <div class="kfz-stats-grid">
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number" style="font-size: 2rem;">ROI</div>
+                                    <div class="kfz-stat-label">عائد استثمار مرتفع</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">12</div>
+                                    <div class="kfz-stat-label">شهر لاسترداد رأس المال</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">35%</div>
+                                    <div class="kfz-stat-label">هامش ربح صافي</div>
+                                </div>
+                                <div class="kfz-stat-card">
+                                    <div class="kfz-stat-number">√</div>
+                                    <div class="kfz-stat-label">جدوى اقتصادية مؤكدة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 17: CTA -->
+                <div class="carousel-item">
+                    <div class="kfz-slide kfz-final-slide">
+                        <div class="kfz-final-content">
+                            <div class="kfz-final-title">KFZ ALFAWAZ</div>
+                            <div class="kfz-final-subtitle">مركز صيانة مركبات متكامل ومبتكر</div>
+                            <p class="kfz-final-text">
+                                مشروع جاهز للتنفيذ الفوري، بفريق عمل مؤهل وخطة تشغيلية محكمة. 
+                                نحن نسد فجوات حقيقية في السوق ونقدم تجربة عميل استثنائية.
+                            </p>
+                            <div class="kfz-final-features">
+                                <span class="kfz-final-feature"><i class="bi bi-check-circle"></i> جاهزية فورية 100%</span>
+                                <span class="kfz-final-feature"><i class="bi bi-check-circle"></i> فريق عمل مؤهل</span>
+                                <span class="kfz-final-feature"><i class="bi bi-check-circle"></i> خطة تشغيلية محكمة</span>
+                                <span class="kfz-final-feature"><i class="bi bi-check-circle"></i> عائد استثمار مرتفع</span>
+                            </div>
+                            <a href="#" class="kfz-cta-button">
+                                <i class="bi bi-rocket-takeoff"></i>
+                                ابدأ الاستثمار الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#kfzCarousel" data-bs-slide="prev">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">السابق</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#kfzCarousel" data-bs-slide="next">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">التالي</span>
+            </button>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="kfz-progress-container">
+            <div class="kfz-progress-bar" id="progressBar" style="width: 5.88%"></div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="kfz-footer">
+        <p>© 2026 KFZ ALFAWAZ - جميع الحقوق محفوظة | <a href="#">سياسة الخصوصية</a></p>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Update progress bar on slide change
+        const carousel = document.getElementById('kfzCarousel');
+        const progressBar = document.getElementById('progressBar');
+        const totalSlides = 17;
+        
+        carousel.addEventListener('slid.bs.carousel', function () {
+            const currentIndex = Array.from(carousel.querySelectorAll('.carousel-item')).indexOf(carousel.querySelector('.carousel-item.active'));
+            const progress = ((currentIndex + 1) / totalSlides) * 100;
+            progressBar.style.width = progress + '%';
+        });
+    </script>
+</body>
+</html>
