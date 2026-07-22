@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALFAWAZ KFZ | ورشة سيارات فيينا | هندسة ألمانية</title>
+<meta name="description" content="ALFAWAZ KFZ في 1120 فيينا. خدمات سيارات شاملة بهندسة ألمانية دقيقة: إصلاح المحركات، حزام التوقيت، الفرامل، فحص §57a، وضبط المحاور ثلاثي الأبعاد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #0A3DFF; /* الأزرق التقني */
+  --color-primary-dark: #052bb3;
+  --color-primary-light: #4a79ff;
+  --color-bg-dark: #0D0D0D; /* أسود كربوني */
+  --color-card-bg: #1A1A1A; /* رمادي داكن */
+  --color-text: #FFFFFF;
+  --color-text-gray: #C0C0C0; /* فضي */
+  --color-text-muted: #8B95A9;
+  --color-white: #FFFFFF;
+  --font-family: 'Tajawal', sans-serif;
+  --max-width: 1200px;
+  --header-height: 80px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  direction: rtl;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ===== تنسيقات الشعار والزر حسب الطلب ===== */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* في الـ RTL، هذا هو الجهة اليمنى (بداية الصفحة) */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  /* في الـ RTL، هذا هو الجهة اليسرى (نهاية الصفحة) */
+}
+
+.logo-svg {
+  width: 150px;
+  height: auto;
+  fill: var(--color-text-gray);
+}
+.logo-svg .car-blue { fill: var(--color-primary); }
+.logo-svg .text-kfz { fill: var(--color-primary); }
+
+nav { display: flex; align-items: center; gap: 5px; }
+nav a {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+nav a:hover, nav a.active { color: var(--color-white); background: rgba(10, 61, 255, 0.15); }
+
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-family);
+}
+.btn:hover { background: var(--color-primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(10, 61, 255, 0.4); }
+.btn-outline { background: transparent; border: 1px solid var(--color-text-gray); color: var(--color-text-gray); }
+.btn-outline:hover { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-white); }
+
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+.mobile-toggle span { width: 28px; height: 2px; background: var(--color-white); border-radius: 2px; transition: 0.3s; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.7), rgba(13,13,13,0.9)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+  padding-top: var(--header-height);
+}
+.hero-content { max-width: 850px; padding: 40px 20px; }
+.hero h1 {
+  font-size: clamp(40px, 8vw, 90px);
+  font-weight: 900;
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+.hero h1 span { color: var(--color-primary); }
+.hero p {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--color-text-gray);
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+/* ===== MARQUEE ===== */
+.marquee-section {
+  background: var(--color-card-bg);
+  overflow: hidden;
+  padding: 15px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.marquee-track {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.marquee-item .dot { width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; display: inline-block; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== SECTION COMMON ===== */
+section { padding: 90px 0; }
+.section-title {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 16px;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.8;
+}
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-image { border-radius: 10px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); }
+.about-text h2 { font-size: 34px; font-weight: 800; margin-bottom: 20px; color: var(--color-white); }
+.about-text p { color: var(--color-text-gray); line-height: 1.8; margin-bottom: 15px; font-size: 15px; }
+.feature-list { list-style: none; margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.feature-list li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-gray);
+}
+.feature-list li::before { content: '✓'; color: var(--color-primary); font-weight: 800; font-size: 18px; }
+
+/* ===== SERVICE CARDS ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.service-card {
+  background: var(--color-card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.service-card:hover { transform: translateY(-8px); border-color: var(--color-primary); box-shadow: 0 15px 40px rgba(10, 61, 255, 0.15); }
+.service-card-image {
+  height: 220px;
+  background: var(--color-bg-dark);
+  overflow: hidden;
+  position: relative;
+}
+.service-card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.8; }
+.service-card:hover .service-card-image img { transform: scale(1.05); opacity: 1; }
+.service-card-body { padding: 25px; }
+.service-card-body h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--color-primary); }
+.service-card-body p { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; }
+.service-card-body .card-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* ===== TIRE SECTION ===== */
+.tire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.tire-content h2 { font-size: 34px; font-weight: 800; margin-bottom: 20px; }
+.tire-content p { color: var(--color-text-gray); line-height: 1.8; margin-bottom: 15px; font-size: 15px; }
+.tire-image { border-radius: 10px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); }
+
+/* ===== 3D ALIGNMENT ===== */
+.alignment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.alignment-content h2 { font-size: 34px; font-weight: 800; margin-bottom: 20px; color: var(--color-white); }
+.alignment-content p { color: var(--color-text-gray); line-height: 1.8; margin-bottom: 15px; font-size: 15px; }
+.alignment-image { border-radius: 10px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+.features-3d {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 30px;
+}
+.feature-3d-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: var(--color-white);
+  transition: 0.3s;
+}
+.feature-3d-item:hover { background: rgba(10, 61, 255, 0.1); border-color: var(--color-primary); }
+.feature-3d-item .icon { font-size: 28px; margin-bottom: 10px; color: var(--color-primary); }
+.feature-3d-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.feature-3d-item p { font-size: 13px; color: var(--color-text-muted); }
+.price-tag {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 20px;
+  box-shadow: 0 10px 20px rgba(10, 61, 255, 0.3);
+}
+
+/* ===== REVIEWS ===== */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.review-card {
+  background: var(--color-card-bg);
+  border-radius: 10px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+.review-card:hover { border-color: var(--color-primary); }
+.review-stars { color: #FFB800; font-size: 18px; margin-bottom: 15px; letter-spacing: 2px; }
+.review-text { font-size: 14px; color: var(--color-text-gray); line-height: 1.8; margin-bottom: 20px; }
+.review-author { font-weight: 700; font-size: 15px; color: var(--color-white); }
+.review-badge { font-size: 12px; color: var(--color-primary); font-weight: 600; margin-top: 5px; }
+.review-aggregate {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.review-aggregate .big-star { font-size: 48px; color: #FFB800; }
+.review-aggregate .big-score { font-size: 36px; font-weight: 800; color: var(--color-white); }
+.review-aggregate p { color: var(--color-text-muted); }
+
+/* ===== CONTACT ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-info-item {
+  display: flex; align-items: flex-start; gap: 15px;
+  background: var(--color-card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.contact-info-item .icon {
+  width: 50px; height: 50px;
+  background: rgba(10, 61, 255, 0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-primary);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.contact-info-item h4 { font-weight: 700; margin-bottom: 4px; color: var(--color-white); }
+.contact-info-item p, .contact-info-item a { color: var(--color-text-muted); font-size: 14px; transition: 0.3s; }
+.contact-info-item a:hover { color: var(--color-primary); }
+.contact-form {
+  background: var(--color-card-bg);
+  border-radius: 10px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 14px; color: var(--color-white); }
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  transition: 0.3s;
+  background: var(--color-bg-dark);
+  color: var(--color-white);
+  direction: rtl;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: #111111;
+  box-shadow: 0 0 0 3px rgba(10, 61, 255, 0.1);
+}
+.form-group textarea { height: 120px; resize: vertical; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--color-bg-dark);
+  color: var(--color-text-muted);
+  padding: 60px 0 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+.footer-col h4 { color: var(--color-white); font-size: 16px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+.footer-col p { font-size: 14px; line-height: 1.8; margin-bottom: 15px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a { font-size: 14px; transition: 0.3s; }
+.footer-col ul li a:hover { color: var(--color-primary); padding-right: 5px; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.3s;
+  font-size: 16px;
+  color: var(--color-white);
+}
+.footer-social a:hover { background: var(--color-primary); transform: translateY(-3px); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { display: none; }
+  nav.active { display: flex; flex-direction: column; position: absolute; top: var(--header-height); left: 0; right: 0; background: rgba(13, 13, 13, 0.98); padding: 20px; gap: 5px; }
+  .mobile-toggle { display: flex; }
+  .about-grid, .tire-grid, .alignment-grid, .contact-grid { grid-template-columns: 1fr; }
+  .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .feature-list { grid-template-columns: 1fr; }
+  .features-3d { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  section { padding: 60px 0; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  
+  /* تعديلات الهيدر للجوال */
+  header .container { flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .header-right { width: 100%; justify-content: flex-start; /* يمين */ order: 0; }
+  .header-left { width: 100%; justify-content: flex-end; /* يسار */ order: 1; margin-top: 10px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    
+    <!-- الجهة اليمنى (في الـ RTL هذه هي البداية): زر اتصل بنا -->
+    <div class="header-right">
+      <button class="btn" style="padding: 12px 28px;">اتصل بنا</button>
+    </div>
+
+    <!-- القائمة في المنتصف -->
+    <nav id="nav">
+      <a href="#home" class="active">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#alignment">ضبط المحاور</a>
+      <a href="#reviews">التقييمات</a>
+      <a href="#contact">اتصل بنا</a>
+    </nav>
+
+    <!-- الجهة اليسرى (في الـ RTL هذه هي النهاية): الشعار -->
+    <div class="header-left">
+      <!-- إذا كان لديك صورة اللوغو، ضعها هنا: <img src="logo.png" width="160"> -->
+      <img src="logo.jpeg" width="100" >
+    </div>
+    
+    <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>ALFAWAZ <span>KFZ</span></h1>
+    <p>هندسة ألمانية، وخبرة عالمية. ورشتكم الموثوقة في 1120 فيينا-ميدلينغ لصيانة وإصلاح جميع أنواع السيارات بأحدث التقنيات.</p>
+    <a href="#contact" class="btn">احجز موعد الآن</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="dot"></span> هندسة ألمانية</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح المحركات</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير حزام التوقيت</div>
+    <div class="marquee-item"><span class="dot"></span> فحص §57a</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الفرامل</div>
+    <div class="marquee-item"><span class="dot"></span> ضبط محاور 3D</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> تشخيص كمبيوتري</div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="marquee-item"><span class="dot"></span> هندسة ألمانية</div>
+    <div class="marquee-item"><span class="dot"></span> إصلاح المحركات</div>
+    <div class="marquee-item"><span class="dot"></span> تغيير حزام التوقيت</div>
+    <div class="marquee-item"><span class="dot"></span> فحص §57a</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الفرامل</div>
+    <div class="marquee-item"><span class="dot"></span> ضبط محاور 3D</div>
+    <div class="marquee-item"><span class="dot"></span> خدمة الإطارات</div>
+    <div class="marquee-item"><span class="dot"></span> تشخيص كمبيوتري</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?q=80&w=600&auto=format&fit=crop" alt="ورشة سيارات ALFAWAZ KFZ">
+      </div>
+      <div class="about-text">
+        <h2>ورشة الموثوقية والهندسة الدقيقة</h2>
+        <p>في ALFAWAZ KFZ، ندمج الخبرة العملية مع الدقة الألمانية الهندسية لتقديم خدمات سيارات شاملة في فيينا. من الإصلاحات العامة إلى صيانة المحركات وضبط الزوايا، يضمن فريقنا أداءً مثالياً لسيارتك.</p>
+        <p>بفضل أحدث أجهزة التشخيص والتقنيات الحديثة، نضمن معالجة كل مركبة على أكمل وجه، مع التزام تام بالجودة والموثوقية والشفافية.</p>
+        <ul class="feature-list">
+          <li>ورشة مستقلة لجميع الماركات</li>
+          <li>هندسة وتقنية ألمانية</li>
+          <li>أسعار عادلة وشفافة</li>
+          <li>خبرة تزيد عن 10 سنوات</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">خدماتنا الاحترافية</h2>
+    <p class="section-subtitle">نقدم في ALFAWAZ KFZ حلولاً شاملة لمركبتك باستخدام أحدث المعدات والتقنيات لضمان الجودة والسلامة.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?q=80&w=400&auto=format&fit=crop" alt="خدمة السيارات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>خدمة السيارات الشاملة</h3>
+          <p>خدمات صيانة وإصلاح شاملة تشمل تغيير الزيت، الفلاتر، وفحص الأنظمة الأساسية لضمان أداء سيارتك الأمثل.</p>
+          <a href="#contact" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=400&auto=format&fit=crop" alt="إصلاح السيارات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>إصلاح السيارات والمحركات</h3>
+          <p>إصلاحات احترافية للمحركات، تغيير أحزمة التوقيت، وخدمات الفرامل المعقدة بأيدي فنيين ذوي خبرة.</p>
+          <a href="#contact" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=400&auto=format&fit=crop" alt="فحص المركبات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>فحص المركبات §57a</h3>
+          <p>نقدم خدمات فحص § 57a (Pickerl) لضمان استيفاء مركبتك لجميع متطلبات السلامة والقوانين النمساوية.</p>
+          <a href="#contact" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?q=80&w=400&auto=format&fit=crop" alt="الهيكل والطلاء" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>الهيكل والطلاء</h3>
+          <p>إصلاح الخدوش والانبعاجات بعد الحوادث باحترافية، مع دهان متعدد الطبقات لحماية مثالية ومظهر جمالي.</p>
+          <a href="#contact" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=400&auto=format&fit=crop" alt="خدمة الإطارات" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>خدمة الإطارات</h3>
+          <p>بيع وتغيير وتخزين الإطارات (صيفي/شتوي) مع استشارة احترافية لاختيار الإطارات المناسبة لمركبتك.</p>
+          <a href="#contact" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-image">
+          <img src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?q=80&w=400&auto=format&fit=crop" alt="معاملات التأمين" loading="lazy">
+        </div>
+        <div class="service-card-body">
+          <h3>معاملات التأمين</h3>
+          <p>دعم مختص في معالجة الأضرار بعد الحوادث، التواصل مع شركات التأمين، وتنسيق الإصلاحات بسلاسة.</p>
+          <a href="#contact" class="card-link">اعرف المزيد ←</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIRE SERVICE -->
+<section>
+  <div class="container">
+    <div class="tire-grid">
+      <div class="tire-content">
+        <h2>خدمة ممتازة لمركبتك</h2>
+        <p>في مجال خدمة الإطارات، تتميز الورشة بعروض شاملة تشمل بيع وتخزين الإطارات. يحصل العملاء على استشارة خبيرة لاختيار إطارات الشتاء والصيف وجميع الفصول والسيارات الرياضية متعددة الاستخدامات والمركبات الكهربائية.</p>
+        <p>بالإضافة إلى ذلك، يمكن للعملاء إجراء تغيير الإطارات بسهولة في ALFAWAZ KFZ، حيث توفر الورشة أيضاً مستودع إطارات محترف للتخزين الآمن والنظيف لإطارات الصيف والشتاء.</p>
+        <a href="#contact" class="btn" style="margin-top:20px;">احجز خدمة الإطارات</a>
+      </div>
+      <div class="tire-image">
+        <img src="https://images.unsplash.com/photo-1592290297363-cac49d856272?q=80&w=600&auto=format&fit=crop" alt="خدمة الإطارات" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3D ALIGNMENT -->
+<section id="alignment">
+  <div class="container">
+    <div class="alignment-grid">
+      <div class="alignment-content">
+        <h2>ضبط المحاور ثلاثي الأبعاد (3D)</h2>
+        <p>من الآن نقدم في ورشتنا ضبط محاور ثلاثي الأبعاد عالي الدقة بأحدث التقنيات الرقمية. بمناسبة إطلاق خدمتنا الجديدة، استفد من عرض الافتتاح الحصري: ضبط محاور كامل مقابل 120 يورو فقط.</p>
+        <p>ضبط الزوايا بشكل صحيح يوفر أماناً أكبر وثباتاً أفضل على الطريق وتآكلاً أقل للإطارات. باستخدام تقنية القياس الرقمي ثلاثية الأبعاد، نقوم بضبط سيارتك بدقة وفقاً لمواصفات الشركة المصنعة.</p>
+        <div class="features-3d">
+          <div class="feature-3d-item">
+            <div class="icon">🔧</div>
+            <h4>أحدث التقنيات</h4>
+            <p>قياس رقمي 3D</p>
+          </div>
+          <div class="feature-3d-item">
+            <div class="icon">⚡</div>
+            <h4>تنفيذ سريع</h4>
+            <p>دقة عالية</p>
+          </div>
+          <div class="feature-3d-item">
+            <div class="icon">🎯</div>
+            <h4>ضبط دقيق</h4>
+            <p>مواصفات المصنع</p>
+          </div>
+          <div class="feature-3d-item">
+            <div class="icon">💰</div>
+            <h4>سعر مميز</h4>
+            <p>120 يورو فقط</p>
+          </div>
+        </div>
+        <div class="price-tag">عرض الافتتاح: 120 يورو فقط</div>
+      </div>
+      <div class="alignment-image">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" alt="ضبط المحاور ثلاثي الأبعاد" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <h2 class="section-title">آراء عملائنا</h2>
+    <div class="review-aggregate">
+      <div class="big-star">⭐</div>
+      <div class="big-score">4.9</div>
+      <p>من 63 تقييم على Google</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"خدمة ممتازة ونظيفة وسريعة. تعامل راقي واحترافية عالية. المركز يستحق كل خير. شكراً جزيلاً للفريق."</p>
+        <div class="review-author">هانس بازدرة</div>
+        <div class="review-badge">✓ عميل موثوق</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"أفضل ورشة سيارات في المنطقة. خدمة ودودة واحترافية. تم تغيير حزام التوقيت بسرعة وبسعر معقول. سأعود دائماً."</p>
+        <div class="review-author">لويس باسكاري</div>
+        <div class="review-badge">✓ عميل موثوق</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"أسعار عادلة جداً مقارنة بالورش الأخرى. العمل سريع ودقيق. أوصي بشدة بهذه الورشة. فريق العمل محترف."</p>
+        <div class="review-author">بلوسكاريو إميل</div>
+        <div class="review-badge">✓ عميل موثوق</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="#" class="btn btn-outline">عرض التقييمات على جوجل</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">اتصل بنا</h2>
+    <p class="section-subtitle">نحن هنا لمساعدتك. اتصل بنا أو قم بزيارة ورشتنا في 1120 فيينا-ميدلينغ.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="icon">📍</div>
+          <div>
+            <h4>العنوان</h4>
+            <p>شارع ساتشيغاسيه 18، مبنى 1<br>1120 فيينا-ميدلينغ، النمسا</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon">📞</div>
+          <div>
+            <h4>الهاتف</h4>
+            <a href="tel:+4369915992024">+43 699 15992024</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon">✉️</div>
+          <div>
+            <h4>البريد الإلكتروني</h4>
+            <a href="mailto:info@alfawaz-kfz.at">info@alfawaz-kfz.at</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon">🕐</div>
+          <div>
+            <h4>ساعات العمل</h4>
+            <p>الإثنين - الجمعة: 08:00 - 18:00<br>السبت: 09:00 - 13:00</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form">
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input type="text" placeholder="أدخل اسمك" required>
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف</label>
+          <input type="tel" placeholder="أدخل رقم هاتفك">
+        </div>
+        <div class="form-group">
+          <label>الرسالة</label>
+          <textarea placeholder="اكتب رسالتك هنا..." required></textarea>
+        </div>
+        <button type="submit" class="btn" style="width:100%">إرسال الرسالة</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>ALFAWAZ KFZ</h4>
+        <p>ورشة سيارات موثوقة في 1120 فيينا-ميدلينغ. نقدم خدمات سيارات شاملة بهندسة ألمانية دقيقة، أسعار عادلة وجودة ممتازة.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="فيسبوك">f</a>
+          <a href="#" aria-label="انستغرام">In</a>
+          <a href="#" aria-label="تويتر">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>خدماتنا</h4>
+        <ul>
+          <li><a href="#services">خدمة السيارات</a></li>
+          <li><a href="#services">إصلاح السيارات</a></li>
+          <li><a href="#services">فحص §57a</a></li>
+          <li><a href="#services">تغيير الزيت</a></li>
+          <li><a href="#services">خدمة الفرامل</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#alignment">ضبط المحاور</a></li>
+          <li><a href="#services">مستودع الإطارات</a></li>
+          <li><a href="#services">خدمة الإطارات</a></li>
+          <li><a href="#services">تشخيص المحرك</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>القانونية</h4>
+        <ul>
+          <li><a href="#">الإشعار القانوني</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">ملفات الارتباط</a></li>
+          <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2024 ALFAWAZ KFZ. جميع الحقوق محفوظة.</span>
+      <span>German Engineering | 1120 Wien-Meidling</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function() {
+    document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('nav').classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
