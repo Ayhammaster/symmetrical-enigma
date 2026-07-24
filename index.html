@@ -284,7 +284,8 @@
             width: 5%;
         }
         .carousel-control-prev-icon, .carousel-control-next-icon {
-            filter: invert(1);
+              filter: invert(0);
+            color: #FFFFFF;
         }
         
         /* === التجاوب (Responsive) === */
@@ -325,7 +326,7 @@
     <div class="kfz-presentation-wrapper">
         <div class="kfz-carousel-container">
             
-            <div id="kfzCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div id="kfzCarousel" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
                 
                 <div class="carousel-inner">
                     
@@ -650,11 +651,11 @@
                 </div>
                 
                 <!-- أزرار التحكم -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#kfzCarousel" data-bs-slide="prev">
+                <button class="carousel-control-next" type="button" data-bs-target="#kfzCarousel" data-bs-slide="prev">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">السابق</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#kfzCarousel" data-bs-slide="next">
+                <button class="carousel-control-prev" type="button" data-bs-target="#kfzCarousel" data-bs-slide="next">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">التالي</span>
                 </button>
